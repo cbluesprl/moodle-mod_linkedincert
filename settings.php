@@ -24,7 +24,7 @@
 
 defined('MOODLE_INTERNAL') || die;
 
-$url = $CFG->wwwroot . '/mod/customcert/verify_certificate.php';
+$url = $CFG->wwwroot . '/mod/linkedincert/verify_certificate.php';
 
 $ADMIN->add('modsettings', new admin_category('linkedincert', get_string('pluginname', 'mod_linkedincert')));
 $settings = new admin_settingpage('modsettinglinkedincert', new lang_string('linkedincertsettings', 'mod_linkedincert'));
@@ -34,12 +34,12 @@ $settings->add(new admin_setting_configtext('linkedincert/organizationid',
 $settings->add(new admin_setting_configtext('linkedincert/organizationname',
     get_string('organizationname', 'linkedincert'), get_string('organizationname_help', 'linkedincert'), '', PARAM_TEXT));
 
-$settings->add(new \mod_customcert\admin_setting_link('customcert/verifycertificate',
-    get_string('verifycertificate', 'customcert'), get_string('verifycertificatedesc', 'customcert'),
-    get_string('verifycertificate', 'customcert'), new moodle_url('/mod/customcert/verify_certificate.php'), ''));
-$settings->add(new admin_setting_configcheckbox('customcert/verifyallcertificates',
-    get_string('verifyallcertificates', 'customcert'),
-    get_string('verifyallcertificates_desc', 'customcert', $url),
+$settings->add(new \mod_linkedincert\admin_setting_link('linkedincert/verifycertificate',
+    get_string('verifycertificate', 'linkedincert'), get_string('verifycertificatedesc', 'linkedincert'),
+    get_string('verifycertificate', 'linkedincert'), new moodle_url('/mod/linkedincert/verify_certificate.php'), ''));
+$settings->add(new admin_setting_configcheckbox('linkedincert/verifyallcertificates',
+    get_string('verifyallcertificates', 'linkedincert'),
+    get_string('verifyallcertificates_desc', 'linkedincert', $url),
     0));
 
 $ADMIN->add('linkedincert', $settings);

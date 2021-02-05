@@ -18,7 +18,7 @@
  * Contains renderer class.
  *
  * @package   mod_linkedincert
- * @copyright 2017 Mark Nelson <markn@moodle.com>
+ * @copyright  2021 Renaud Lemaire <rlemaire@cblue.be>
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
