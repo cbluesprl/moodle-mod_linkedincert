@@ -158,7 +158,7 @@ function linkedincert_get_addtoprofile_link($linkedincert, $issue) {
         'name' => $linkedincert->name,
         'issueYear' => $dateTimeCreated->format('Y'),
         'issueMonth' => $dateTimeCreated->format('m'),
-        'certUrl' => (string) (new moodle_url('/mod/linkedincert/verify_certificate.php')),
+        'certUrl' => (string) (new moodle_url('/mod/linkedincert/verify_certificate.php', ['code' => $issue->code])),
         'certId' => $issue->code,
     ];
     if (!empty($config->organizationid)) {

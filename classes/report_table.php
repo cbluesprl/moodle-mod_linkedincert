@@ -88,8 +88,8 @@ class report_table extends \table_sql {
         }
 
         if (!$this->is_downloading()) {
-            $columns[] = 'download';
-            $headers[] = get_string('file');
+//            $columns[] = 'download';
+//            $headers[] = get_string('file');
         }
 
         if (!$this->is_downloading() && has_capability('mod/linkedincert:manage', $context)) {
