@@ -432,7 +432,6 @@ class certificate {
         $issue->userid = $userid;
         $issue->linkedincertid = $certificateid;
         $issue->code = self::generate_code();
-        $issue->emailed = 0;
         $issue->timecreated = time();
 
         // Insert the record into the database.

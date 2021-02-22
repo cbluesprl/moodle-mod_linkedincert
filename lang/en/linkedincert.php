@@ -31,7 +31,7 @@ $string['modulenameplural'] = 'LinkedIn certificates Activities';
 
 $string['linkedincertsettings'] = 'LinkedIn Certificates Settings';
 $string['organizationid'] = 'Organization id';
-$string['organizationid_help'] = 'Linkedin ID of your organization';
+$string['organizationid_help'] = 'Linkedin ID of your organization<br /><div style="margin-bottom:15px; padding: 0 15px; border:1px solid #dee2e6 !important"><h3>How to find your LinkedIn Organization ID?</h3><ol><li>Log in to LinkedIn as the admin for your business\' Organisation Page</li><li>Check the URL used when you are logged in as the admin</li><li>Your LinkedIn Organization ID is the seven-digit number in the URL :<br/><i>https://www.linkedin.com/company/ORGANIZATION_ID/admin/</i></li></ol></div>';
 $string['organizationname'] = 'Organization name';
 $string['organizationname_help'] = 'If you do not have an Organization id, this field will be used instead';
 
