@@ -48,7 +48,7 @@ $canmanage = has_capability('mod/linkedincert:manage', $context);
 $canviewreport = has_capability('mod/linkedincert:viewreport', $context);
 
 // Initialise $PAGE.
-$pageurl = new moodle_url('/mod/linkedincert/view.php', array('id' => $cm->id));
+$pageurl = new moodle_url('/mod/linkedincert/index.php', array('id' => $cm->id));
 \mod_linkedincert\page_helper::page_setup($pageurl, $context, format_string($linkedincert->name));
 
 // Check if the user can view the certificate based on time spent in course.
@@ -64,8 +64,8 @@ if ($linkedincert->requiredtime && !$canmanage) {
 // Check if we are deleting an issue.
 if ($deleteissue && $canmanage && confirm_sesskey()) {
     if (!$confirm) {
-        $nourl = new moodle_url('/mod/linkedincert/view.php', ['id' => $id]);
-        $yesurl = new moodle_url('/mod/linkedincert/view.php',
+        $nourl = new moodle_url('/mod/linkedincert/index.php', ['id' => $id]);
+        $yesurl = new moodle_url('/mod/linkedincert/index.php',
             [
                 'id' => $id,
                 'deleteissue' => $deleteissue,
@@ -88,7 +88,7 @@ if ($deleteissue && $canmanage && confirm_sesskey()) {
     $DB->delete_records('linkedincert_issues', array('id' => $deleteissue, 'linkedincertid' => $linkedincert->id));
 
     // Redirect back to the manage templates page.
-    redirect(new moodle_url('/mod/linkedincert/view.php', array('id' => $id)));
+    redirect(new moodle_url('/mod/linkedincert/index.php', array('id' => $id)));
 }
 
 $event = \mod_linkedincert\event\course_module_viewed::create(array(

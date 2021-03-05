@@ -145,7 +145,7 @@ class report_table extends \table_sql {
         global $OUTPUT;
 
         $icon = new \pix_icon('download', get_string('download'), 'linkedincert');
-        $link = new \moodle_url('/mod/linkedincert/view.php',
+        $link = new \moodle_url('/mod/linkedincert/index.php',
             [
                 'id' => $this->cm->id,
                 'downloadissue' => $user->id
@@ -165,7 +165,7 @@ class report_table extends \table_sql {
         global $OUTPUT;
 
         $icon = new \pix_icon('i/delete', get_string('delete'));
-        $link = new \moodle_url('/mod/linkedincert/view.php',
+        $link = new \moodle_url('/mod/linkedincert/index.php',
             [
                 'id' => $this->cm->id,
                 'deleteissue' => $user->issueid,

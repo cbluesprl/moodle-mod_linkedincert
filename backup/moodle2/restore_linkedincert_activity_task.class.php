@@ -67,7 +67,7 @@ class restore_linkedincert_activity_task extends restore_activity_task {
     static public function define_decode_rules() {
         $rules = array();
 
-        $rules[] = new restore_decode_rule('LINKEDINCERTVIEWBYID', '/mod/linkedincert/view.php?id=$1', 'course_module');
+        $rules[] = new restore_decode_rule('LINKEDINCERTVIEWBYID', '/mod/linkedincert/index.php?id=$1', 'course_module');
         $rules[] = new restore_decode_rule('LINKEDINCERTINDEX', '/mod/linkedincert/index.php?id=$1', 'course');
 
         return $rules;
@@ -83,11 +83,11 @@ class restore_linkedincert_activity_task extends restore_activity_task {
     static public function define_restore_log_rules() {
         $rules = array();
 
-        $rules[] = new restore_log_rule('linkedincert', 'add', 'view.php?id={course_module}', '{linkedincert}');
-        $rules[] = new restore_log_rule('linkedincert', 'update', 'view.php?id={course_module}', '{linkedincert}');
-        $rules[] = new restore_log_rule('linkedincert', 'view', 'view.php?id={course_module}', '{linkedincert}');
-        $rules[] = new restore_log_rule('linkedincert', 'received', 'view.php?id={course_module}', '{linkedincert}');
-        $rules[] = new restore_log_rule('linkedincert', 'view report', 'view.php?id={course_module}', '{linkedincert}');
+        $rules[] = new restore_log_rule('linkedincert', 'add', 'index.php?id={course_module}', '{linkedincert}');
+        $rules[] = new restore_log_rule('linkedincert', 'update', 'index.php?id={course_module}', '{linkedincert}');
+        $rules[] = new restore_log_rule('linkedincert', 'view', 'index.php?id={course_module}', '{linkedincert}');
+        $rules[] = new restore_log_rule('linkedincert', 'received', 'index.php?id={course_module}', '{linkedincert}');
+        $rules[] = new restore_log_rule('linkedincert', 'view report', 'index.php?id={course_module}', '{linkedincert}');
 
         return $rules;
     }
