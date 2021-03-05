@@ -45,6 +45,7 @@ $string['cannotverifyallcertificates'] = 'You do not have the permission to veri
 $string['certificate'] = 'Certificate';
 $string['code'] = 'Code';
 $string['verified'] = 'Verified';
+$string['notverified'] = 'Not verified';
 $string['verify'] = 'Verify';
 $string['verifyallcertificates'] = 'Allow verification of all certificates';
 $string['verifyallcertificates_desc'] = 'When this setting is enabled any person (including users not logged in) can visit the link \'{$a}\' in order to verify any certificate on the site, rather than having to go to the verification link for each certificate.
