@@ -24,143 +24,78 @@
 
 require_once('../../config.php');
 
-$id = required_param('id', PARAM_INT);
-$downloadown = optional_param('downloadown', false, PARAM_BOOL);
-$downloadtable = optional_param('download', null, PARAM_ALPHA);
-$downloadissue = optional_param('downloadissue', 0, PARAM_INT);
-$deleteissue = optional_param('deleteissue', 0, PARAM_INT);
-$confirm = optional_param('confirm', false, PARAM_BOOL);
-$page = optional_param('page', 0, PARAM_INT);
-$perpage = optional_param('perpage', \mod_linkedincert\certificate::linkedincert_PER_PAGE, PARAM_INT);
+$id = required_param('id', PARAM_INT); // Course ID.
 
-$cm = get_coursemodule_from_id('linkedincert', $id, 0, false, MUST_EXIST);
-$course = $DB->get_record('course', array('id' => $cm->course), '*', MUST_EXIST);
-$linkedincert = $DB->get_record('linkedincert', array('id' => $cm->instance), '*', MUST_EXIST);
+$course = $DB->get_record('course', array('id' => $id), '*', MUST_EXIST);
 
+// Requires a login.
+require_login($course);
 
-// Ensure the user is allowed to view this page.
-require_login($course, false, $cm);
-$context = context_module::instance($cm->id);
-require_capability('mod/linkedincert:view', $context);
+// Set up the page variables.
+$pageurl = new moodle_url('/mod/linkedincert/index.php', array('id' => $course->id));
+\mod_linkedincert\page_helper::page_setup($pageurl, context_course::instance($id),
+    get_string('modulenameplural', 'linkedincert'));
 
-$canreceive = has_capability('mod/linkedincert:receiveissue', $context);
-$canmanage = has_capability('mod/linkedincert:manage', $context);
-$canviewreport = has_capability('mod/linkedincert:viewreport', $context);
+// Additional page setup needed.
+$PAGE->set_pagelayout('incourse');
+$PAGE->navbar->add(get_string('modulenameplural', 'linkedincert'));
 
-// Initialise $PAGE.
-$pageurl = new moodle_url('/mod/linkedincert/index.php', array('id' => $cm->id));
-\mod_linkedincert\page_helper::page_setup($pageurl, $context, format_string($linkedincert->name));
-
-// Check if the user can view the certificate based on time spent in course.
-if ($linkedincert->requiredtime && !$canmanage) {
-    if (\mod_linkedincert\certificate::get_course_time($course->id) < ($linkedincert->requiredtime * 60)) {
-        $a = new stdClass;
-        $a->requiredtime = $linkedincert->requiredtime;
-        notice(get_string('requiredtimenotmet', 'linkedincert', $a), "$CFG->wwwroot/course/view.php?id=$course->id");
-        die;
-    }
-}
-
-// Check if we are deleting an issue.
-if ($deleteissue && $canmanage && confirm_sesskey()) {
-    if (!$confirm) {
-        $nourl = new moodle_url('/mod/linkedincert/index.php', ['id' => $id]);
-        $yesurl = new moodle_url('/mod/linkedincert/index.php',
-            [
-                'id' => $id,
-                'deleteissue' => $deleteissue,
-                'confirm' => 1,
-                'sesskey' => sesskey()
-            ]
-        );
-
-        // Show a confirmation page.
-        $PAGE->navbar->add(get_string('deleteconfirm', 'linkedincert'));
-        $message = get_string('deleteissueconfirm', 'linkedincert');
-        echo $OUTPUT->header();
-        echo $OUTPUT->heading(format_string($linkedincert->name));
-        echo $OUTPUT->confirm($message, $yesurl, $nourl);
-        echo $OUTPUT->footer();
-        exit();
-    }
-
-    // Delete the issue.
-    $DB->delete_records('linkedincert_issues', array('id' => $deleteissue, 'linkedincertid' => $linkedincert->id));
-
-    // Redirect back to the manage templates page.
-    redirect(new moodle_url('/mod/linkedincert/index.php', array('id' => $id)));
-}
-
-$event = \mod_linkedincert\event\course_module_viewed::create(array(
-    'objectid' => $linkedincert->id,
-    'context' => $context,
+// Add the page view to the Moodle log.
+$event = \mod_linkedincert\event\course_module_instance_list_viewed::create(array(
+    'context' => context_course::instance($course->id)
 ));
 $event->add_record_snapshot('course', $course);
-$event->add_record_snapshot('linkedincert', $linkedincert);
 $event->trigger();
 
-
-// Get the current groups mode.
-if ($groupmode = groups_get_activity_groupmode($cm)) {
-    groups_get_activity_group($cm, true);
+// Get the customcerts, if there are none display a notice.
+if (!$certs = get_all_instances_in_course('linkedincert', $course)) {
+    echo $OUTPUT->header();
+    notice(get_string('nocerts', 'linkedincert'), new moodle_url('/course/view.php', array('id' => $course->id)));
+    echo $OUTPUT->footer();
+    exit();
 }
 
-// Generate the table to the report if there are issues to display.
-if ($canviewreport) {
-    // Get the total number of issues.
-    $reporttable = new \mod_linkedincert\report_table($linkedincert->id, $cm, $groupmode, $downloadtable);
-    $reporttable->define_baseurl($pageurl);
+// Create the table to display the different custom certificates.
+$table = new html_table();
 
-    if ($reporttable->is_downloading()) {
-        $reporttable->download();
-        exit();
+if ($usesections = course_format_uses_sections($course->format)) {
+    $table->head = array(get_string('sectionname', 'format_'.$course->format), get_string('name'),
+        get_string('receiveddate', 'linkedincert'));
+} else {
+    $table->head = array(get_string('name'), get_string('receiveddate', 'linkedincert'));
+}
+
+$currentsection = '';
+foreach ($certs as $cert) {
+    // Check if the customcert is visible, if so show text as normal, else show it as dimmed.
+    if ($cert->visible) {
+        $link = html_writer::tag('a', $cert->name, array('href' => new moodle_url('/mod/linkedincert/view.php',
+            array('id' => $cert->coursemodule))));
+    } else {
+        $link = html_writer::tag('a', $cert->name, array('class' => 'dimmed',
+            'href' => new moodle_url('/mod/linkedincert/view.php', array('id' => $cert->coursemodule))));
+    }
+    // If we are at a different section then print a horizontal rule.
+    if ($cert->section !== $currentsection) {
+        if ($currentsection !== '') {
+            $table->data[] = 'hr';
+        }
+        $currentsection = $cert->section;
+    }
+    // Check if there is was an issue provided for this user.
+    if ($certrecord = $DB->get_record('linkedincert_issues', array('userid' => $USER->id, 'linkedincertid' => $cert->id))) {
+        $issued = userdate($certrecord->timecreated);
+    } else {
+        $issued = get_string('notissued', 'linkedincert');
+    }
+    // Only display the section column if the course format uses sections.
+    if ($usesections) {
+        $table->data[] = array($cert->section, $link, $issued);
+    } else {
+        $table->data[] = array($link, $issued);
     }
 }
 
-// Generate the intro content if it exists.
-$intro = '';
-if (!empty($linkedincert->intro)) {
-    $intro = $OUTPUT->box(format_module_intro('linkedincert', $linkedincert, $cm->id), 'generalbox', 'intro');
-}
-
-if ($canreceive) {
-    // Set the userid value of who we are downloading the certificate for.
-    $userid = $USER->id;
-    // Create new linkedincert issue record if one does not already exist.
-    if (!$DB->record_exists('linkedincert_issues', array('userid' => $USER->id, 'linkedincertid' => $linkedincert->id))) {
-        \mod_linkedincert\certificate::issue_certificate($linkedincert->id, $USER->id);
-    }
-
-    // Set the custom certificate as viewed.
-    $completion = new completion_info($course);
-    $completion->set_module_viewed($cm);
-}
-
-// If the current user has been issued a linkedincert generate HTML to display the details.
-$issuehtml = '';
-$linkedinbutton = '';
-$issues = $DB->get_records('linkedincert_issues', array('userid' => $USER->id, 'linkedincertid' => $linkedincert->id));
-if ($issues && !$canmanage) {
-    // Get the most recent issue (there should only be one).
-    $issue = reset($issues);
-    $issuestring = get_string('receiveddate', 'linkedincert') . ': ' . userdate($issue->timecreated);
-    $issuehtml = $OUTPUT->box($issuestring);
-
-    $linkedinimg = '<img src="https://download.linkedin.com/desktop/add2profile/buttons/en_US.png " alt="LinkedIn Add to Profile button">';
-    $linkedinbutton = '<div><a href="' . linkedincert_get_addtoprofile_link($linkedincert, $issue) . '">' . $linkedinimg . '</a></div>';
-}
-
-
-// Output all the page data.
 echo $OUTPUT->header();
-echo $OUTPUT->heading(format_string($linkedincert->name));
-echo $intro;
-echo $issuehtml;
-echo $linkedinbutton;
-if (isset($reporttable)) {
-    $numissues = \mod_linkedincert\certificate::get_number_of_issues($linkedincert->id, $cm, $groupmode);
-    echo $OUTPUT->heading(get_string('listofissues', 'linkedincert', $numissues), 3);
-    groups_print_activity_menu($cm, $pageurl);
-    echo $reporttable->out($perpage, false);
-}
-echo $OUTPUT->footer($course);
+echo html_writer::table($table);
+echo $OUTPUT->footer();

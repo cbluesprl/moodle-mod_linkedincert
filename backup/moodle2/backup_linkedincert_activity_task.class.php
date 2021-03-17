@@ -66,7 +66,7 @@ class backup_linkedincert_activity_task extends backup_activity_task {
         $content = preg_replace($search, '$@LINKEDINCERTINDEX*$2@$', $content);
 
         // Link to linkedincert view by moduleid.
-        $search = "/(".$base."\/mod\/linkedincert\/index.php\?id\=)([0-9]+)/";
+        $search = "/(".$base."\/mod\/linkedincert\/view.php\?id\=)([0-9]+)/";
         $content = preg_replace($search, '$@LINKEDINCERTVIEWBYID*$2@$', $content);
 
         return $content;

@@ -38,13 +38,14 @@ $string['organizationname_help'] = 'If you do not have an Organization id, this 
 
 $string['receiveddate'] = 'Awarded on';
 $string['listofissues'] = 'Recipients: {$a}';
-
+$string['nocerts'] = 'There are no certificates for this course';
 
 $string['awardedto'] = 'Awarded to';
 $string['cannotverifyallcertificates'] = 'You do not have the permission to verify all certificates on the site.';
 $string['certificate'] = 'Certificate';
 $string['code'] = 'Code';
 $string['verified'] = 'Verified';
+$string['notissued'] = 'Not awarded';
 $string['notverified'] = 'Not verified';
 $string['verify'] = 'Verify';
 $string['verifyallcertificates'] = 'Allow verification of all certificates';
