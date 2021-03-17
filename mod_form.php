@@ -31,17 +31,17 @@ class mod_linkedincert_mod_form extends moodleform_mod
         }
         $this->standard_intro_elements();
 
-        $optionsheader = $mform->createElement('header', 'options', get_string('options', 'customcert'));
+        $optionsheader = $mform->createElement('header', 'options', get_string('options', 'linkedincert'));
 
 
-        $mform->addElement('selectyesno', 'verifyany', get_string('verifycertificateanyone', 'customcert'));
-        $mform->addHelpButton('verifyany', 'verifycertificateanyone', 'customcert');
-        $mform->setDefault('verifyany', get_config('customcert', 'verifyany'));
+        $mform->addElement('selectyesno', 'verifyany', get_string('verifycertificateanyone', 'linkedincert'));
+        $mform->addHelpButton('verifyany', 'verifycertificateanyone', 'linkedincert');
+        $mform->setDefault('verifyany', get_config('linkedincert', 'verifyany'));
         $mform->setType('verifyany', PARAM_INT);
 
-        $mform->addElement('text', 'requiredtime', get_string('coursetimereq', 'customcert'), array('size' => '3'));
-        $mform->addHelpButton('requiredtime', 'coursetimereq', 'customcert');
-        $mform->setDefault('requiredtime', get_config('customcert', 'requiredtime'));
+        $mform->addElement('text', 'requiredtime', get_string('coursetimereq', 'linkedincert'), array('size' => '3'));
+        $mform->addHelpButton('requiredtime', 'coursetimereq', 'linkedincert');
+        $mform->setDefault('requiredtime', get_config('linkedincert', 'requiredtime'));
         $mform->setType('requiredtime', PARAM_INT);
 
         $mform->insertElementBefore($optionsheader, 'verifyany');
@@ -56,7 +56,7 @@ class mod_linkedincert_mod_form extends moodleform_mod
     {
         global $COURSE;
         $draftitemid = file_get_submitted_draft_itemid('packagefile');
-        file_prepare_draft_area($draftitemid, $this->context->id, 'mod_htmlpack', 'package', 0,
+        file_prepare_draft_area($draftitemid, $this->context->id, 'mod_linkedincert', 'package', 0,
             array('subdirs' => 0, 'maxfiles' => 1));
         $defaultvalues['packagefile'] = $draftitemid;
     }
