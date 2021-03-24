@@ -142,26 +142,6 @@ class report_table extends \table_sql {
     }
 
     /**
-     * Generate the download column.
-     *
-     * @param \stdClass $user
-     * @return string
-     */
-    public function col_download($user) {
-        global $OUTPUT;
-
-        $icon = new \pix_icon('download', get_string('download'), 'linkedincert');
-        $link = new \moodle_url('/mod/linkedincert/view.php',
-            [
-                'id' => $this->cm->id,
-                'downloadissue' => $user->id
-            ]
-        );
-
-        return $OUTPUT->action_link($link, '', null, null, $icon);
-    }
-
-    /**
      * Generate the actions column.
      *
      * @param \stdClass $user
