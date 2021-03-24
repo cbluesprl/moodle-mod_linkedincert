@@ -17,7 +17,8 @@
 /**
  * Contains class used to prepare verification results for display.
  *
- * @package   mod_linkedincert
+ * @package mod_linkedincert
+ * @category linkedincert
  * @copyright  2021 Renaud Lemaire <rlemaire@cblue.be>
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
@@ -32,7 +33,8 @@ use templatable;
 /**
  * Class to prepare verification results for display.
  *
- * @package   mod_linkedincert
+ * @package mod_linkedincert
+ * @category linkedincert
  * @author Renaud Lemaire <rlemaire@cblue.be>
  * @copyright 2020 CBlue SPRL {@link https://www.cblue.be}
  * @copyright based on work by 2017 Mark Nelson <markn@moodle.com>

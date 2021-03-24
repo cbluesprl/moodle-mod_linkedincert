@@ -16,6 +16,8 @@
 
 /**
  *
+ * @package mod_linkedincert
+ * @category linkedincert
  * @date :       05/02/2021
  * @author:      mgerard@cblue.be (support@cblue.be)
  * @copyright 2021 CBlue SPRL {@link https://www.cblue.be}

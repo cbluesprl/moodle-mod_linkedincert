@@ -17,7 +17,8 @@
 /**
  * The report that displays issued certificates.
  *
- * @package    mod_linkedincert
+ * @package mod_linkedincert
+ * @category linkedincert
  * @author Renaud Lemaire <rlemaire@cblue.be>
  * @copyright 2020 CBlue SPRL {@link https://www.cblue.be}
  * @copyright based on work by 2016 Mark Nelson <markn@moodle.com>
@@ -35,7 +36,8 @@ require_once($CFG->libdir . '/tablelib.php');
 /**
  * Class for the report that displays issued certificates.
  *
- * @package    mod_linkedincert
+ * @package mod_linkedincert
+ * @category linkedincert
  * @author Renaud Lemaire <rlemaire@cblue.be>
  * @copyright 2020 CBlue SPRL {@link https://www.cblue.be}
  * @copyright based on work by 2016 Mark Nelson <markn@moodle.com>

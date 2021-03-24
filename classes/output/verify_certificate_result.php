@@ -17,7 +17,8 @@
 /**
  * Contains class used to prepare a verification result for display.
  *
- * @package   mod_linkedincert
+ * @package mod_linkedincert
+ * @category linkedincert
  * @author Renaud Lemaire <rlemaire@cblue.be>
  * @copyright 2020 CBlue SPRL {@link https://www.cblue.be}
  * @copyright based on work by 2017 Mark Nelson <markn@moodle.com>
@@ -34,7 +35,8 @@ use templatable;
 /**
  * Class to prepare a verification result for display.
  *
- * @package   mod_linkedincert
+ * @package mod_linkedincert
+ * @category linkedincert
  * @author Renaud Lemaire <rlemaire@cblue.be>
  * @copyright 2020 CBlue SPRL {@link https://www.cblue.be}
  * @copyright based on work by 2017 Mark Nelson <markn@moodle.com>

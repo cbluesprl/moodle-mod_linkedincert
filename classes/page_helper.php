@@ -17,7 +17,8 @@
 /**
  * Provides useful functions related to setting up the page.
  *
- * @package    mod_linkedincert
+ * @package mod_linkedincert
+ * @category linkedincert
  * @author Renaud Lemaire <rlemaire@cblue.be>
  * @copyright 2020 CBlue SPRL {@link https://www.cblue.be}
  * @copyright based on work by 2016 Mark Nelson <markn@moodle.com>
@@ -33,7 +34,8 @@ defined('MOODLE_INTERNAL') || die();
  *
  * Provides useful functions.
  *
- * @package    mod_linkedincert
+ * @package mod_linkedincert
+ * @category linkedincert
  * @author Renaud Lemaire <rlemaire@cblue.be>
  * @copyright 2020 CBlue SPRL {@link https://www.cblue.be}
  * @copyright based on work by 2016 Mark Nelson <markn@moodle.com>

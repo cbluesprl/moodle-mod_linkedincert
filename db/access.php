@@ -2,6 +2,8 @@
 /**
  * linkedincert module capability definition
  *
+ * @package mod_linkedincert
+ * @category linkedincert
  * @date :       13/10/2020
  * @author Renaud Lemaire <rlemaire@cblue.be>
  * @copyright 2020 CBlue SPRL {@link https://www.cblue.be}

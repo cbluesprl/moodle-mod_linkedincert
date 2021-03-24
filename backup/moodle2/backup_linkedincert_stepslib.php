@@ -17,7 +17,8 @@
 /**
  * Define all the backup steps that will be used by the backup_linkedincert_activity_task.
  *
- * @package    mod_linkedincert
+ * @package mod_linkedincert
+ * @category linkedincert
  * @author Renaud Lemaire <rlemaire@cblue.be>
  * @copyright 2020 CBlue SPRL {@link https://www.cblue.be}
  * @copyright based on work by 2013 Mark Nelson <markn@moodle.com>
@@ -29,7 +30,8 @@ defined('MOODLE_INTERNAL') || die('Direct access to this script is forbidden.');
 /**
  * Define the complete linkedincert structure for backup, with file and id annotations.
  *
- * @package    mod_linkedincert
+ * @package mod_linkedincert
+ * @category linkedincert
  * @author Renaud Lemaire <rlemaire@cblue.be>
  * @copyright 2020 CBlue SPRL {@link https://www.cblue.be}
  * @copyright based on work by 2013 Mark Nelson <markn@moodle.com>
