@@ -11,7 +11,6 @@
 defined('MOODLE_INTERNAL') || die;
 
 require_once($CFG->dirroot.'/course/moodleform_mod.php');
-require_once($CFG->dirroot.'/mod/htmlpack/locallib.php');
 require_once($CFG->libdir.'/filelib.php');
 
 class mod_linkedincert_mod_form extends moodleform_mod
