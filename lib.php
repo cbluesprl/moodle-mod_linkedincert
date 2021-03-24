@@ -18,8 +18,10 @@
  * linkedincert module core interaction API
  *
  * @package    mod_linkedincert
- * @copyright  2021 Renaud Lemaire <rlemaire@cblue.be>
- * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ * @author Renaud Lemaire <rlemaire@cblue.be>
+ * @copyright 2020 CBlue SPRL {@link https://www.cblue.be}
+ * @copyright based on work by 2013 Mark Nelson <markn@moodle.com>
+ * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
 defined('MOODLE_INTERNAL') || die('Direct access to this script is forbidden.');

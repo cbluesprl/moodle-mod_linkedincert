@@ -18,8 +18,10 @@
  * Provides functionality needed by linkedincert activities.
  *
  * @package    mod_linkedincert
- * @copyright  2021 Renaud Lemaire <rlemaire@cblue.be>
- * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ * @author Renaud Lemaire <rlemaire@cblue.be>
+ * @copyright 2020 CBlue SPRL {@link https://www.cblue.be}
+ * @copyright based on work by 2016 Mark Nelson <markn@moodle.com>
+ * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
 namespace mod_linkedincert;
@@ -32,8 +34,10 @@ defined('MOODLE_INTERNAL') || die();
  * Helper functionality for certificates.
  *
  * @package    mod_linkedincert
- * @copyright  2016 Mark Nelson <markn@moodle.com>
- * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ * @author Renaud Lemaire <rlemaire@cblue.be>
+ * @copyright 2020 CBlue SPRL {@link https://www.cblue.be}
+ * @copyright based on work by 2016 Mark Nelson <markn@moodle.com>
+ * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 class certificate {
 

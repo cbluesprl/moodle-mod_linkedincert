@@ -15,11 +15,13 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * This script is owned by CBlue SPRL, please contact CBlue regarding any licences issues.
  *
  * @date :       05/02/2021
  * @author:      mgerard@cblue.be (support@cblue.be)
- * @copyright:   CBlue SPRL, 2021
+ * @copyright 2021 CBlue SPRL {@link https://www.cblue.be}
+ * @copyright based on work by 2013 Mark Nelson <markn@moodle.com>
+ * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ *
  */
 
 defined('MOODLE_INTERNAL') || die();

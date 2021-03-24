@@ -18,8 +18,10 @@
  * This file contains the backup tasks that provides all the settings and steps to perform a backup of the activity.
  *
  * @package    mod_linkedincert
- * @copyright  2013 Mark Nelson <markn@moodle.com>
- * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ * @author Renaud Lemaire <rlemaire@cblue.be>
+ * @copyright 2020 CBlue SPRL {@link https://www.cblue.be}
+ * @copyright based on work by 2013 Mark Nelson <markn@moodle.com>
+ * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
 defined('MOODLE_INTERNAL') || die('Direct access to this script is forbidden.');
@@ -30,8 +32,10 @@ require_once($CFG->dirroot . '/mod/linkedincert/backup/moodle2/backup_linkedince
  * Handles creating tasks to peform in order to create the backup.
  *
  * @package    mod_linkedincert
- * @copyright  2013 Mark Nelson <markn@moodle.com>
- * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ * @author Renaud Lemaire <rlemaire@cblue.be>
+ * @copyright 2020 CBlue SPRL {@link https://www.cblue.be}
+ * @copyright based on work by 2013 Mark Nelson <markn@moodle.com>
+ * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 class backup_linkedincert_activity_task extends backup_activity_task {
 

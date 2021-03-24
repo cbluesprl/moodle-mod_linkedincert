@@ -1,10 +1,12 @@
 <?php
 /**
- * This script is owned by CBlue SPRL, please contact CBlue regarding any licences issues.
+ * linkedincert module capability definition
  *
  * @date :       13/10/2020
- * @author:      rlemaire@cblue.be
- * @copyright:   CBlue SPRL, 2020
+ * @author Renaud Lemaire <rlemaire@cblue.be>
+ * @copyright 2020 CBlue SPRL {@link https://www.cblue.be}
+ * @copyright based on work by 2013 Mark Nelson <markn@moodle.com>
+ * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
 defined('MOODLE_INTERNAL') || die;

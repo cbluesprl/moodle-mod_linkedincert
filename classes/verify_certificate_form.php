@@ -18,8 +18,10 @@
  * This files contains the form for verifying a certificate.
  *
  * @package    mod_linkedincert
- * @copyright  2017 Mark Nelson <markn@moodle.com>
- * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ * @author Renaud Lemaire <rlemaire@cblue.be>
+ * @copyright 2020 CBlue SPRL {@link https://www.cblue.be}
+ * @copyright based on work by 2017 Mark Nelson <markn@moodle.com>
+ * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
 namespace mod_linkedincert;
@@ -32,8 +34,10 @@ require_once($CFG->libdir . '/formslib.php');
  * The form for verifying a certificate.
  *
  * @package    mod_linkedincert
- * @copyright  2017 Mark Nelson <markn@moodle.com>
- * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ * @author Renaud Lemaire <rlemaire@cblue.be>
+ * @copyright 2020 CBlue SPRL {@link https://www.cblue.be}
+ * @copyright based on work by 2017 Mark Nelson <markn@moodle.com>
+ * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 class verify_certificate_form extends \moodleform {
 

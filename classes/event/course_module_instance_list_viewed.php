@@ -18,7 +18,9 @@
  * Contains the course module instance list viewed event class.
  *
  * @package   mod_linkedincert
- * @copyright  2021 Renaud Lemaire <rlemaire@cblue.be>
+ * @author Renaud Lemaire <rlemaire@cblue.be>
+ * @copyright 2020 CBlue SPRL {@link https://www.cblue.be}
+ * @copyright based on work by 2017 Mark Nelson <markn@moodle.com>
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
@@ -30,7 +32,9 @@ defined('MOODLE_INTERNAL') || die();
  * The course module instance list viewed event class.
  *
  * @package   mod_linkedincert
- * @copyright  2021 Renaud Lemaire <rlemaire@cblue.be>
+ * @author Renaud Lemaire <rlemaire@cblue.be>
+ * @copyright 2020 CBlue SPRL {@link https://www.cblue.be}
+ * @copyright based on work by 2017 Mark Nelson <markn@moodle.com>
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 class course_module_instance_list_viewed extends \core\event\course_module_instance_list_viewed {

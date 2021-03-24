@@ -18,8 +18,10 @@
  * The report that displays issued certificates.
  *
  * @package    mod_linkedincert
- * @copyright  2021 Renaud Lemaire <rlemaire@cblue.be>
- * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ * @author Renaud Lemaire <rlemaire@cblue.be>
+ * @copyright 2020 CBlue SPRL {@link https://www.cblue.be}
+ * @copyright based on work by 2016 Mark Nelson <markn@moodle.com>
+ * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
 namespace mod_linkedincert;
@@ -34,8 +36,10 @@ require_once($CFG->libdir . '/tablelib.php');
  * Class for the report that displays issued certificates.
  *
  * @package    mod_linkedincert
- * @copyright  2021 Renaud Lemaire <rlemaire@cblue.be>
- * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ * @author Renaud Lemaire <rlemaire@cblue.be>
+ * @copyright 2020 CBlue SPRL {@link https://www.cblue.be}
+ * @copyright based on work by 2016 Mark Nelson <markn@moodle.com>
+ * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 class report_table extends \table_sql {
 
